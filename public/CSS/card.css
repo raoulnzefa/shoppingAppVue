@@ -1,0 +1,14 @@
+.wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .wrapper:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+  
+  .wrapper img {
+    position: absolute;
+  }

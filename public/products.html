@@ -1,0 +1,88 @@
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ADD PRODUCT</title>
+    <script src="vue.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+        <nav class="navbar navbar-primary sticky-top bg-dark text-white">
+                <h3 class="navbar-brand" href="#">ShopEasy.com</h3>
+                <span class="navbar-text">
+                        <a class="btn btn-primary" href="/cart" role="button">View Cart</a>
+                    <a class="btn btn-light" href="/products" role="button">All products</a>
+                    
+                    <a class="btn btn-dark" href="/addProduct" role="button">Add Product</a>
+                    <a class="btn btn-danger" href="/logout" role="button">Logout</a>
+                </span>
+              </nav>
+
+
+              <br>
+  <div class="container">
+        <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">/ Add Product</li>
+                  
+                </ol>
+              </nav>
+    
+    <div  id ="app" class="row">
+        
+                        <div class = "col-2"></div>
+                    
+                          <div class="alert alert-success col-md-8">
+                            <h4>Add a product to the catalog</h4>
+                            <hr>
+                            <br>
+                        <label>Name</label>
+                        <input placeholder="Product Name" type="text" class="form-control" v-model="name"/>
+                        <br>
+                        <label>Catagory</label>
+                        <select class="form-control" v-model="manufacturer" placeholder="Select Vendor">
+                          <option>Boys</option>
+                          <option>Girls</option>
+                          <option>Men</option>
+                          <option>Women</option>
+                        </select>
+                        <br>
+                        <label>Price</label>
+                        <input placeholder="Price" type="text" class="form-control" v-model="price"/>
+                        <br>
+                        <button class="btn btn-info" @click="add">Add</button>
+                        <br>
+                        <br>
+                        <br>  
+                    </div>
+                    <div class = "col-2"></div>
+            
+        </div>
+    </div>
+
+  </div>
+  <script>
+      let app = new Vue({
+        el: '#app',
+        data: {
+          name: '',
+          manufacturer: '',
+          price: ''
+        },
+        methods: {
+          add: function () {
+            axios.post("http://localhost:8081/api/products", {
+              name: this.name, manufacturer: this.manufacturer, price: this.price
+            }).then((response) => alert("Product added"))
+              .catch((err) => alert("Unable to add product"))
+          }
+        }
+      });  
+  </script>
+</body>
+</html>
