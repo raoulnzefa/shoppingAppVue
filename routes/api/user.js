@@ -1,3 +1,9 @@
+/* 
+**created by Agampreet Singh aka artisticGeek
+** LinkedIn: https://www.linkedin.com/in/agampreet-singh-arora/
+** website: www.agampreetsingh.com
+** github: www.github.com/agampreetsingh
+*/
 const route = require('express').Router();
 const Product = require('../../db').Product;
 const Vendor = require('../../db').Vendor;
