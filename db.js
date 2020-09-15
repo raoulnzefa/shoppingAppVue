@@ -6,9 +6,10 @@
 */
 const Sequelize = require('sequelize')
 
-const db = new Sequelize('shoppingappdatabase', 'root', 'root', {
-  dialect: 'mysql',
+const db = new Sequelize({
   host: 'localhost',
+  dialect: 'sqlite',
+  storage: 'data.db',
 });
 
 db.authenticate()
